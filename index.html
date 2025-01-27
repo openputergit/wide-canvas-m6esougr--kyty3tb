@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Analysis Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        .neu-brutal {
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.2s ease;
+        }
+        .neu-brutal:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0 #000;
+        }
+        .neu-button {
+            background: #FFA500;
+            border: 2px solid #000;
+            box-shadow: 3px 3px 0 #000;
+            transition: all 0.2s ease;
+        }
+        .neu-button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 #000;
+        }
+        body {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body class="p-4">
+    <div class="max-w-5xl mx-auto bg-white neu-brutal p-6">
+        <header class="flex justify-between items-center mb-6 border-b-2 border-black pb-2">
+            <h1 class="text-2xl font-bold">Parking Analysis Tool</h1>
+            <div class="space-x-4">
+                <button class="neu-button px-3 py-1">File</button>
+                <button class="neu-button px-3 py-1">Help</button>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Analysis Selection -->
+            <div class="neu-brutal p-4 bg-white">
+                <h2 class="font-bold mb-4">Select Analysis</h2>
+                <div class="space-y-2">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" class="w-4 h-4">
+                        <span>Trajectory</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" class="w-4 h-4">
+                        <span>Scanning</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="md:col-span-2">
+                <!-- Recording Folder Selection -->
+                <div class="neu-brutal p-4 mb-6 bg-white">
+                    <h2 class="font-bold mb-4">Select Recording Folder</h2>
+                    <div class="flex space-x-2">
+                        <input type="text" class="flex-1 border-2 border-black p-2" placeholder="Select folder path...">
+                        <button class="neu-button px-4 py-2">Browse</button>
+                    </div>
+                </div>
+
+                <!-- Report Details -->
+                <div class="neu-brutal p-4 bg-white">
+                    <h2 class="font-bold mb-4">Select Report Details</h2>
+                    <div class="space-y-4">
+                        <div class="flex space-x-2">
+                            <input type="text" class="flex-1 border-2 border-black p-2" placeholder="Report name...">
+                            <button class="neu-button px-4 py-2">Browse</button>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <input type="text" class="w-32 border-2 border-black p-2" value="SYS2019A">
+                            <span>Config</span>
+                            <input type="text" class="w-32 border-2 border-black p-2" value="R3_Simple_p1">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="w-4 h-4">
+                                <span>Add 3D View</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output and Actions -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
+            <div class="md:col-span-3">
+                <div class="neu-brutal p-4 bg-white h-64">
+                    <h2 class="font-bold mb-2">Output</h2>
+                    <div class="h-48 border-2 border-black p-2">
+                        <!-- Output content will appear here -->
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="neu-brutal p-4 bg-white">
+                    <h2 class="font-bold mb-4">Actions</h2>
+                    <div class="space-y-2">
+                        <button class="neu-button w-full px-4 py-2">Run Analysis</button>
+                        <button class="neu-button w-full px-4 py-2">Clear all</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click handlers for browse buttons
+        document.querySelectorAll('.neu-button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent === 'Browse') {
+                    alert('File browser would open here');
+                } else if (this.textContent === 'Run Analysis') {
+                    alert('Analysis started');
+                } else if (this.textContent === 'Clear all') {
+                    // Clear all input fields
+                    document.querySelectorAll('input[type="text"]').forEach(input => {
+                        input.value = '';
+                    });
+                    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                        checkbox.checked = false;
+                    });
+                }
+            });
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
